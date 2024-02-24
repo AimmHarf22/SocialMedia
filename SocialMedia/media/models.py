@@ -3,11 +3,20 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Users(AbstractUser):
-    # TODO: finish fixing the models
-    first_name = models.CharField()
-    last_name = models.CharField()
-    email = models.AbstractUser.email(blank=False)
-    username = models.AbstractUser.username(blank=False)
-    password = models.AbstractUser.password()
-    
+class User(AbstractUser):
+
+    def __str__(self):
+        return f'ID: {self.id}, Username: {self.username}, Email: {self.email}, First Name: {self.first_name}, Last Name: {self.last_name}'
+
+
+class Posts(models.Model):
+    first_name = models.CharField(max_length=1000)
+    last_name = models.CharField(max_length=1000)
+    username = models.CharField(max_length=1000)
+    date = models.DateTimeField()
+    post = models.TextField(null=False)
+
+    def __str__(self):
+        return f'First: {self.first_name}, Last: {self.last_name}, username: {self.username}, Date: {self.date}, Post: {self.post}'
+
+

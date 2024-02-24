@@ -9,18 +9,20 @@
 <body class="register-body">
     <div class="whole-screen-container">
         
-            <form  action="{% url 'register' %}" method="post">
-                <div class="register-container">
-                    <div class="first-name-container"><input type="text" placeholder="First Name" name="firstName"></div>
-                    <div class="last-name-container"><input type="text" placeholder="Last Name" name="lastName"></div>
-                    <div class="email-container"><input type="text" placeholder="Email" name="email"></div>
-                    <div class="username-container"><input type="text" placeholder="Username" name="username"></div>
-                    <div class="password-container"><input type="text" placeholder="Password" name="password"></div>
-                    <div class="password2-container"><input type="text" placeholder="Re-enter Password" name="password2"></div>
-                    <div class="submit-container"><button type="submit">Create Account</button></div>
-                </div>
-            </form>
         
+        <form  action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="register-container">
+                <div class="first-name-container"><input type="text" placeholder="First Name" name="firstName"></div>
+                <div class="last-name-container"><input type="text" placeholder="Last Name" name="lastName"></div>
+                <div class="email-container"><input type="text" placeholder="Email" name="email"></div>
+                <div class="username-container"><input type="text" placeholder="Username" name="username"></div>
+                <div class="password-container"><input type="password" placeholder="Password" name="password"></div>
+                <div class="password2-container"><input type="password" placeholder="Re-enter Password" name="password2"></div>
+                <div class="submit-container"><button type="submit">Create Account</button></div>
+            </div>
+        </form>
+        <p>Already Have an Account? <a href="{% url 'login' %}">Login</a></p>
     </div>
     
 

@@ -1,0 +1,12 @@
+{% extends 'media/layout.html' %}
+
+{% block body %}
+    <header>
+        <h1>Talkme</h1>
+    </header>
+    <form action="{% url 'newposts' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="post">
+        <button type="submit">submit</button>
+    </form>
+{% endblock %}
