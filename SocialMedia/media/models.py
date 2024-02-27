@@ -16,7 +16,11 @@ class Posts(models.Model):
     date = models.DateTimeField()
     post = models.TextField(null=False)
 
+    def serialize(self):
+        return {"First Name": self.first_name}
+    
     def __str__(self):
-        return f'First: {self.first_name}, Last: {self.last_name}, username: {self.username}, Date: {self.date}, Post: {self.post}'
+        return f'ID: {self.id} First: {self.first_name}, Last: {self.last_name}, username: {self.username}, Date: {self.date}, Post: {self.post}'
 
+    
 
