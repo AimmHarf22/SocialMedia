@@ -11,10 +11,15 @@
 
 </head>
 <body>
+  <header>
+    <h1>Talk Me</h1>
+  </header>
     <div class="nav">
-      <a href="">home</a>
-      <div>
-        <button>Profile</button>
+      <div class="nav-container">
+        <div class="home-nav-container"><a href="{% url 'index' %}"><button id="btn-home">Home</button></a></div>
+        <div class="profile-nav-container">
+          <a href="{% url 'profile' user_id=id.id %}"><button id="btn-layout-profile"></button></a>
+        </div> 
       </div>
     </div>
     {% block body %}

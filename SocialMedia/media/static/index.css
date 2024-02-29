@@ -9,21 +9,58 @@ header {
 }
 
 .nav {
-    position: sticky;
+    position: fixed;
     top: 0px;
     
-    
+    height: 50%;
     width: 6%;
   
-    z-index: -1;
+   
     border: 1px solid blue;
+    
    
 }
 
 
-.nav div {
-    position: absolute;
-    bottom: 0px;
+.nav-container{
+   
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   width: 100%;
+   align-items: end;
+   justify-content: center;
+  
+}
+
+.home-nav-container {
+    align-self: self-start;
+}
+
+#btn-layout-profile {
+    background-image: url("images/examplepost.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 60px;
+    border: 0;
+    border-radius: 30px;
+}
+
+#btn-home {
+    
+    
+    background-repeat: no-repeat;
+    border: 0;
+    
+}
+
+#btn-layout-profile:hover {
+    box-shadow: 1px 1px 5px;
+}
+
+.nav-container div:hover {
+    cursor: pointer;
+    
 }
 
 
@@ -33,7 +70,7 @@ header {
    
     height: 95vh;
     width: 95vw;
-    z-index: 1;
+   
     
 
 }

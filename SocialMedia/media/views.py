@@ -19,7 +19,17 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request, "media/login.html")
     all_posts = Posts.objects.all()
-    return render(request, "media/index.html", {"allposts":all_posts})
+    return render(request, "media/index.html", {"allposts": all_posts, "id": request.user})
+
+
+def user_profile(request, user_id):
+    id = User.objects.get(pk=user_id)
+    posts = Posts.objects.filter(username=id.username)
+
+    return render(request, 'media/profile.html', {
+        "id": request.user,
+        "allposts": posts
+        })
 
 
 def register(request):
@@ -139,13 +149,22 @@ def new_posts(request):
 def post_api(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        new_post = Posts(first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, date=datetime.datetime.now(), post=data['Post'])
+        new_post = Posts(
+            first_name=request.user.first_name,
+            last_name=request.user.last_name,
+            username=request.user.username,
+            date=datetime.datetime.now(),
+            post=data["Post"],
+        )
         new_post.save()
         return JsonResponse(203, safe=False)
     # JsonResponse(json.dumps("hi"))
 
+
 @csrf_exempt
 def get_api(request):
     all_posts = Posts.objects.all()
-    serialized_data = serializers.serialize("json", all_posts, fields=['first_name', 'last_name', 'username', 'post'])
+    serialized_data = serializers.serialize(
+        "json", all_posts, fields=["first_name", "last_name", "username", "post"]
+    )
     return JsonResponse(serialized_data, safe=False, status=200)

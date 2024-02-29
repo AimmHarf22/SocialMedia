@@ -1,1 +1,9 @@
-Todo: Implement the Profile Page 
+Todo: 
+
+1. Implement the follow
+2. Implement the like
+3. Implement the dislike
+
+
+If Time:
+ - Implement the comment
