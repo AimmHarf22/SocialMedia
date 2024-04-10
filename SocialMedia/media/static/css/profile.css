@@ -32,8 +32,8 @@ p {
 .image-profile-container img {
    
     object-fit: cover;
-    height: 100%;
-    width: 100%;
+    height: 250px;
+    width: 270px;
     overflow: hidden;
     border-radius: 50%;
     border: 3px solid white;
@@ -48,6 +48,7 @@ p {
     row-gap: 10px;
     
     justify-content: center;
+    grid-template-columns: 1fr;
    
 }
 
@@ -155,20 +156,26 @@ p {
 .about-container {
     display: grid;
     grid-template-rows: auto 1fr;
-    justify-self: center;
+  
 }
 
 
-#btn-follow {
+.btn-follow {
     color: white;
-    background-color: #0066CC;
     border-radius: 10px;
     border: none;
 }
 
-#btn-message {
+.btn-message {
     color: white;
     background-color: #00994C;
     border: 0;
     border-radius: 10px;
+}
+
+#btn-follow {
+    background-color: #0066CC;
+}
+#btn-unfollow {
+    background-color: #FF3333;
 }

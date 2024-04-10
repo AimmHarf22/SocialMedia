@@ -4,3 +4,6 @@ from media.models import *
 
 admin.site.register(User)
 admin.site.register(Posts)
+admin.site.register(Follow)
+admin.site.register(Likes)
+admin.site.register(Comment)

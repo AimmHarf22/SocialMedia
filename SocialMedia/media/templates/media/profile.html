@@ -1,7 +1,8 @@
 {% extends 'media/layout.html'%}
 
 {% block head %}
-    <link rel="stylesheet" href="/static/profile.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <script src="/static/js/profile.js"></script>
 
 {% endblock %}
 
@@ -10,7 +11,7 @@
     <div class="whole-page-container">
         <div class="top-container">
             <div class="image-profile-container">
-                <img src="/static/images/examplepost.jpg" alt="">
+                <img src="/medias/{{request.user.profile_image}}" alt="">
             </div>
             <div class="names-profile-container">
                 <div class="names-profile-container1">
@@ -21,15 +22,22 @@
                     <p>@{{id.username}}</p>
                 </div>
                 <div class="followers-container">
-                    <div><p>Followers: 0</p></div>
-                    <div><p>Following: 0</p></div>
+                    <div><p>Followers: {{followers_count}}</p></div>
+                    <div><p>Following: {{following_count}}</p></div>
                     
                     
                 </div>
                 <div class="message-container">
                     <div>
-                        <button id="btn-follow">Follow</button>
-                        <button id="btn-message">Message</button>
+                        {% if request.user.username != id.username %}
+                            {% if isFollowing %}
+                                <button id="btn-unfollow" class="btn-follow">Unfollow</button>
+                            {% else %}
+                                <button id="btn-follow" class="btn-follow">Follow</button> 
+                            {% endif %}
+                            
+                            <button class="btn-message">Message</button>
+                        {% endif %}
                     </div>
                     
                     
@@ -37,9 +45,7 @@
             </div>
             <div class="about-container">
                 <p>About Me:</p>
-                <p>f you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. Choose the number of random paragraphs you'd like to see and click the button. Your chosen number of paragraphs will instantly appear.
-
-                    While it may not be obvious to everyone, there are a number of reasons creating random paragraphs can be useful. A few examples of how some people use this generator are listed in the following paragraphs.</p>
+                <p>{{id.bio}}</p>
             </div>
         </div>
         <div class="bottom-container">

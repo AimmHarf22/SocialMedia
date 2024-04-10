@@ -7,3 +7,8 @@ Todo:
 
 If Time:
  - Implement the comment
+
+
+To Do (Now):
+ - Continue the new users page
+ 
